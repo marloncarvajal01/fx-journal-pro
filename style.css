@@ -1,0 +1,85 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap');
+
+body {
+  margin: 0;
+  font-family: 'Inter', sans-serif;
+  background: #0b0f19;
+  color: #d1d5db;
+  overflow: hidden;
+}
+
+.app { display: flex; height: 100vh; }
+
+.sidebar {
+  width: 260px;
+  background: #0e1626;
+  padding: 30px 20px;
+  border-right: 1px solid #1f2937;
+}
+
+.sidebar h2 { text-align: center; margin-bottom: 40px; font-weight: 600; color: #22c55e; }
+.sidebar ul { list-style: none; padding: 0; }
+.sidebar li { padding: 14px 15px; cursor: pointer; border-radius: 6px; margin-bottom: 10px; transition: 0.25s; color: #9ca3af; }
+.sidebar li:hover { background: #132033; color: #22c55e; transform: translateX(6px); }
+
+.content { flex: 1; padding: 40px; overflow-y: auto; animation: fadeSlide 0.35s ease; }
+
+@keyframes fadeSlide { from { opacity: 0; transform: translateY(15px); } to { opacity: 1; transform: translateY(0); } }
+
+h1 { font-weight: 600; color: #22c55e; margin-bottom: 25px; }
+
+.card { background: #111827; padding: 25px; border-radius: 12px; margin-bottom: 25px; border: 1px solid #1f2937; }
+
+.input-row { display: flex; gap: 10px; margin-bottom: 5px; }
+.input-row > * { flex: 1; }
+
+/* --- TU BLOQUE FAVORITO CORREGIDO --- */
+input:not([type="checkbox"]):not([type="file"]), textarea, select {
+  width: 100%; padding: 12px; margin-bottom: 14px; border-radius: 6px;
+  border: 1px solid #1f2937; background-color: #0f172a; color: #d1d5db; 
+  box-sizing: border-box; outline: none; transition: all 0.3s ease;
+  font-family: 'Inter', sans-serif;
+}
+
+input:focus, textarea:focus, select:focus {
+  border-color: #22c55e;
+  box-shadow: 0 0 5px rgba(34, 197, 94, 0.3);
+  background-color: #111827;
+}
+
+/* EVITA CUADROS BLANCOS POR AUTOCOMPLETADO */
+input:-webkit-autofill,
+input:-webkit-autofill:hover, 
+input:-webkit-autofill:focus, 
+input:-webkit-autofill:active {
+    -webkit-box-shadow: 0 0 0 30px #0f172a inset !important;
+    -webkit-text-fill-color: #d1d5db !important;
+    transition: background-color 5000s ease-in-out 0s;
+} 
+/* ------------------------------------ */
+
+button { padding: 10px 20px; background: #22c55e; border: none; color: #0b0f19; border-radius: 6px; cursor: pointer; font-weight: 600; }
+button.delete { background: #ef4444; color: white; margin-left: 10px; }
+
+.green { color: #22c55e; font-weight: bold; }
+.red { color: #ef4444; font-weight: bold; }
+.orange { color: #f59e0b; font-weight: bold; }
+
+.calendar { display: grid; grid-template-columns: repeat(8, 1fr); gap: 6px; }
+.calendar div { 
+  padding: 12px; min-height: 95px; border-radius: 8px; cursor: pointer; 
+  text-align: center; background: #0f172a; border: 1px solid #1f2937; font-size: 12px; 
+  display: flex; flex-direction: column; justify-content: center;
+}
+.calendar-header { font-weight: 600; color: #6b7280; background: transparent !important; border: none !important; min-height: auto !important; }
+
+.trade-image { width: 180px; height: auto; margin-top: 15px; border-radius: 8px; border: 2px solid #1f2937; cursor: zoom-in; }
+
+.stats-container { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; }
+.stat-card { background: #111827; padding: 30px; border-radius: 15px; border: 1px solid #1f2937; text-align: center; }
+.stat-card .value { font-size: 36px; font-weight: 800; display: block; }
+
+/* ESTILOS PARA EL NUEVO CHECKLIST */
+.checklist-group { background: #0f172a; padding: 20px; border-radius: 8px; border: 1px solid #1f2937; margin-bottom: 20px; }
+.checklist-item { display: flex; align-items: center; margin-bottom: 10px; font-size: 14px; cursor: pointer; }
+.checklist-item input[type="checkbox"] { width: auto; margin-right: 12px; accent-color: #22c55e; }

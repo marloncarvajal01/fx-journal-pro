@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <title>Forex Journal Pro - Latam Edition</title>
+  <link rel="stylesheet" href="style.css" />
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+
+<div class="app">
+  <aside class="sidebar">
+    <h2>⚡ FX Journal</h2>
+    <ul>
+      <li onclick="navigate('newTrade')">➕ Nuevo Trade</li>
+      <li onclick="navigate('dashboard')">📊 Dashboard</li>
+      <li onclick="navigate('history')">📑 Historial</li>
+      <li onclick="navigate('stats')">📈 Estadísticas</li>
+      <li onclick="navigate('calendar')">📅 Calendario</li>
+    </ul>
+  </aside>
+
+  <main class="content" id="content"></main>
+</div>
+
+<div id="imgModal" class="modal-overlay" onclick="this.style.display='none'">
+  <img id="modalImg" src="" alt="Zoom Trade">
+</div>
+
+<script src="app.js"></script>
+</body>
+</html>
