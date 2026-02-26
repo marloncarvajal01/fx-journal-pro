@@ -1,32 +1,50 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8" />
-  <title>Forex Journal Pro - Latam Edition</title>
-  <link rel="stylesheet" href="style.css" />
-  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FX Journal | Professional Trading</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-auth-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore-compat.js"></script>
 </head>
 <body>
+    <div class="app">
+        <div class="sidebar" id="sidebar" style="display:none;">
+            <h2>⚡ FX Journal</h2>
+            <ul>
+                <li onclick="navigate('newTrade')">➕ Nuevo Trade</li>
+                <li onclick="navigate('dashboard')">📊 Dashboard</li>
+                <li onclick="navigate('calendar')">📅 Historial</li>
+                <li onclick="navigate('stats')">📈 Estadísticas</li>
+                <li style="margin-top: 50px; color: #ef4444;" onclick="logout()">🚪 Cerrar Sesión</li>
+            </ul>
+        </div>
 
-<div class="app">
-  <aside class="sidebar">
-    <h2>⚡ FX Journal</h2>
-    <ul>
-      <li onclick="navigate('newTrade')">➕ Nuevo Trade</li>
-      <li onclick="navigate('dashboard')">📊 Dashboard</li>
-      <li onclick="navigate('history')">📑 Historial</li>
-      <li onclick="navigate('stats')">📈 Estadísticas</li>
-      <li onclick="navigate('calendar')">📅 Calendario</li>
-    </ul>
-  </aside>
+        <div class="content">
+            <div id="auth-container">
+                <h1>Bienvenido a FX Journal</h1>
+                <div class="card">
+                    <p>Inicia sesión para guardar tus trades en la nube.</p>
+                    <input type="email" id="login-email" placeholder="Correo electrónico">
+                    <input type="password" id="login-pass" placeholder="Contraseña">
+                    <button onclick="login()" style="width:100%; margin-bottom:10px;">Iniciar Sesión</button>
+                    <button onclick="register()" style="width:100%; background:#1f2937; color:white;">Registrarse</button>
+                </div>
+            </div>
+            <div id="main-content" style="display:none;">
+                <div id="content"></div>
+            </div>
+        </div>
+    </div>
 
-  <main class="content" id="content"></main>
-</div>
+    <div id="imgModal" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.9); z-index:1000; justify-content:center; align-items:center;">
+        <span onclick="document.getElementById('imgModal').style.display='none'" style="position:absolute; top:20px; right:30px; color:white; font-size:40px; cursor:pointer;">&times;</span>
+        <img id="modalImg" style="max-width:90%; max-height:90%;">
+    </div>
 
-<div id="imgModal" class="modal-overlay" onclick="this.style.display='none'">
-  <img id="modalImg" src="" alt="Zoom Trade">
-</div>
-
-<script src="app.js"></script>
+    <script src="app.js"></script>
 </body>
 </html>
