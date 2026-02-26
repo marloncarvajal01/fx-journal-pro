@@ -3,12 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>FX Journal | Professional Trading</title>
+    <title>FX Journal | Pro Cloud</title>
     <link rel="stylesheet" href="style.css">
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-app-compat.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-auth-compat.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-auth-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore-compat.js"></script>
 </head>
 <body>
     <div class="app">
@@ -17,8 +17,8 @@
             <ul>
                 <li onclick="navigate('newTrade')">➕ Nuevo Trade</li>
                 <li onclick="navigate('dashboard')">📊 Dashboard</li>
-                <li onclick="navigate('calendar')">📅 Historial</li>
-                <li onclick="navigate('stats')">📈 Estadísticas</li>
+                <li onclick="navigate('calendar')">📅 Calendario</li>
+                <li onclick="navigate('stats')">📈 Análisis</li>
                 <li style="margin-top: 50px; color: #ef4444;" onclick="logout()">🚪 Cerrar Sesión</li>
             </ul>
         </div>
@@ -27,15 +27,16 @@
             <div id="auth-container">
                 <h1>Bienvenido a FX Journal</h1>
                 <div class="card">
-                    <p>Inicia sesión para guardar tus trades en la nube.</p>
+                    <p>Inicia sesión para acceder a tu diario en la nube.</p>
                     <input type="email" id="login-email" placeholder="Correo electrónico">
                     <input type="password" id="login-pass" placeholder="Contraseña">
                     <button onclick="login()" style="width:100%; margin-bottom:10px;">Iniciar Sesión</button>
                     <button onclick="register()" style="width:100%; background:#1f2937; color:white;">Registrarse</button>
                 </div>
             </div>
+
             <div id="main-content" style="display:none;">
-                <div id="content"></div>
+                <div id="dynamic-content"></div>
             </div>
         </div>
     </div>
