@@ -2,7 +2,10 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <title>FX Journal Pro</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tradelogix | Terminal Pro</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="style.css">
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
@@ -11,35 +14,54 @@
 </head>
 <body>
 
-    <div id="auth-container" style="display:none; height:100vh; flex-direction:column; align-items:center; justify-content:center; background:#0b0f19;">
-        <div class="card" style="width:320px; text-align:center;">
-            <h2 style="color:#22c55e;">Bienvenido</h2>
-            <input type="email" id="login-email" placeholder="Correo electrónico">
-            <input type="password" id="login-pass" placeholder="Contraseña">
-            <button onclick="login()" style="width:100%; margin-bottom:10px;">Entrar</button>
-            <button onclick="register()" style="width:100%; background:#1f2937; color:#9ca3af;">Crear Cuenta</button>
+    <div id="auth-container" style="display:none;" class="auth-wrapper">
+        <div class="login-box">
+            <div class="brand-container">
+                <span class="iso-x-premium">X</span>
+                <h1 class="brand-name">TRADELOGIX</h1>
+            </div>
+            <div class="hero-section">
+                <h2 class="hero-title">Terminal Profesional de Trading</h2>
+                <p class="hero-subtitle">Control total <br>de tu <span class="accent-text">capital</span></p>
+            </div>
+            <div class="card glass-effect">
+                <div class="input-wrapper-pro">
+                    <i class="fas fa-envelope"></i>
+                    <input type="email" id="login-email" placeholder="Correo electrónico">
+                </div>
+                <div class="input-wrapper-pro">
+                    <i class="fas fa-lock"></i>
+                    <input type="password" id="login-pass" placeholder="Contraseña">
+                </div>
+                <button onclick="login()" class="main-btn">Iniciar sesión <i class="fas fa-arrow-right"></i></button>
+                <button onclick="register()" class="btn-ghost">Solicitar Acceso</button>
+            </div>
         </div>
     </div>
 
     <div id="main-app" style="display:none;">
-        <div class="app">
-            <div class="sidebar">
-                <h2>FX JOURNAL</h2>
-                <ul>
-                    <li onclick="navigate('newTrade')">➕ Nuevo Trade</li>
-                    <li onclick="navigate('dashboard')">🏠 Dashboard</li>
-                    <li onclick="navigate('calendar')">📅 Calendario</li>
-                    <li onclick="navigate('stats')">📊 Estadísticas</li>
-                    <li onclick="logout()" style="margin-top:50px; color:#ef4444;">🚪 Salir</li>
-                </ul>
-            </div>
-            <div class="content" id="content">
+        <div class="app-container">
+            <nav class="sidebar">
+                <div class="sidebar-header">
+                    <div class="brand-container-side">
+                        <span class="iso-x-side">X</span>
+                        <h2>TRADE<span class="green-text">LOGIX</span></h2>
+                    </div>
                 </div>
+                <ul class="nav-links">
+                    <li onclick="navigate('newTrade')" class="nav-item"><i class="fas fa-plus-circle"></i> Nuevo Trade</li>
+                    <li onclick="navigate('dashboard')" class="nav-item active"><i class="fas fa-chart-line"></i> Dashboard</li>
+                    <li onclick="navigate('calendar')" class="nav-item"><i class="fas fa-calendar-alt"></i> Calendario</li>
+                    <li onclick="navigate('stats')" class="nav-item"><i class="fas fa-percentage"></i> Estadísticas</li>
+                </ul>
+                <div class="sidebar-footer">
+                    <li onclick="logout()" class="nav-item logout"><i class="fas fa-sign-out-alt"></i> Salir del Terminal</li>
+                </div>
+            </nav>
+            <main class="main-content">
+                <div id="content"></div>
+            </main>
         </div>
-    </div>
-
-    <div id="imgModal" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.9); z-index:1000; justify-content:center; align-items:center;" onclick="this.style.display='none'">
-        <img id="modalImg" style="max-width:90%; max-height:90%; border-radius:8px;">
     </div>
 
     <script src="app.js"></script>
